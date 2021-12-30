@@ -2,33 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public abstract class PullAndThrow : MonoBehaviour
 {
-    [SerializeField] float _distanceDecreaser = 100;
+    public float _distanceDecreaser = 100;
 
-    
-    InputController _input;
-    PlayerAnimation _playerAnimation;
+    protected bool _isBeginning;
+    protected bool _release;
+    protected float _firstTouch;
+    protected float distance;
 
-    bool _isBeginning;
-    bool _release;
-    float _firstTouch;
-    
-    void Start()
+    protected InputController _input;
+
+    void Awake()
     {
-        _playerAnimation = GetComponent<PlayerAnimation>();
-        _input = new InputController();
-
         _isBeginning = true;
+        _input = new InputController();
     }
 
-    void Update()
+    protected void PullThrow()
     {
         if (_isBeginning)
         {
 
             float currentPosition;
-            float distance;
+            
 
             if (_input.FirstMouseClick)
             {
@@ -38,17 +35,15 @@ public class PlayerController : MonoBehaviour
             {
                 currentPosition = Input.mousePosition.x;
                 distance = (_firstTouch - currentPosition) / _distanceDecreaser;
-                _playerAnimation._animator.SetFloat("Pull", distance);
                 
+
             }
             if (_input.MouseUp)
             {
                 _release = true;
-                _playerAnimation.TurningAnimation(_release);
+                
                 _isBeginning = false;
             }
         }
     }
-
-    
 }
