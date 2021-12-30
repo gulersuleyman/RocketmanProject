@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullStickAnimation : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _distanceDecreaser = 100;
 
-    Animator _animator;
+    
     InputController _input;
-
+    PlayerAnimation _playerAnimation;
 
     bool _isBeginning;
     bool _release;
@@ -16,18 +16,17 @@ public class PullStickAnimation : MonoBehaviour
     
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
         _input = new InputController();
 
         _isBeginning = true;
     }
 
-    
     void Update()
     {
         if (_isBeginning)
         {
-            
+
             float currentPosition;
             float distance;
 
@@ -38,22 +37,18 @@ public class PullStickAnimation : MonoBehaviour
             if (_input.MouseClick)
             {
                 currentPosition = Input.mousePosition.x;
-                distance = (_firstTouch - currentPosition)/ _distanceDecreaser;
-                _animator.SetFloat("Pull", distance);
+                distance = (_firstTouch - currentPosition) / _distanceDecreaser;
+                _playerAnimation._animator.SetFloat("Pull", distance);
+                
             }
-            if(_input.MouseUp)
+            if (_input.MouseUp)
             {
                 _release = true;
-                ReleaseAnimation(_release);
+                _playerAnimation.TurningAnimation(_release);
                 _isBeginning = false;
             }
         }
     }
 
-    public void ReleaseAnimation(bool isReleasing)
-    {
-        if (isReleasing == _animator.GetBool("Release")) return;
-
-        _animator.SetBool("Release", isReleasing);
-    }
+    
 }
