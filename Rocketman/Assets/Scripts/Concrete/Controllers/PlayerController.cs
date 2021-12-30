@@ -7,11 +7,12 @@ public class PlayerController : PullAndThrow
     
     PlayerAnimation _playerAnimation;
 
+    public bool _cameraMover;
     
     void Start()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
-       
+        _cameraMover = false;
     }
 
     void Update()
@@ -26,6 +27,7 @@ public class PlayerController : PullAndThrow
             if (_input.MouseUp)
             {
                 _playerAnimation.TurningAnimation(true);
+                _cameraMover = true;
             }
         }
         PullThrow();
