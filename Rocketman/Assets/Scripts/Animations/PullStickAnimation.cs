@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PullStickAnimation : MonoBehaviour
 {
+    [SerializeField] float _distanceDecreaser = 100;
+
     Animator _animator;
     InputController _input;
 
@@ -36,7 +38,7 @@ public class PullStickAnimation : MonoBehaviour
             if (_input.MouseClick)
             {
                 currentPosition = Input.mousePosition.x;
-                distance = (_firstTouch - currentPosition)/100;
+                distance = (_firstTouch - currentPosition)/ _distanceDecreaser;
                 _animator.SetFloat("Pull", distance);
             }
             if(_input.MouseUp)
