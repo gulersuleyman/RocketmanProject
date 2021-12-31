@@ -14,6 +14,9 @@ public class PlayerController : PullAndThrow
     Rigidbody _rigidbody;
 
     public bool _cameraMover;
+    public bool _bounced;
+    public bool _gameOver;
+
     bool _throwed;
     bool _onAir;
     Vector3 _currentMousePos;
@@ -24,13 +27,19 @@ public class PlayerController : PullAndThrow
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
         _rigidbody = GetComponent<Rigidbody>();
+
+
         _cameraMover = false;
         _throwed = false;
         _onAir = false;
+        _bounced = false;
+        _gameOver = false;
     }
 
     void Update()
     {
+        if (_gameOver) return;
+
         BeginningAnimations();
         PullThrow();
         AirAnimations();
@@ -40,6 +49,9 @@ public class PlayerController : PullAndThrow
 
     private void FixedUpdate()
     {
+        if (_gameOver) return;
+
+
         if (_throwed)
         {
             _rigidbody.useGravity = true;
@@ -47,9 +59,9 @@ public class PlayerController : PullAndThrow
             _rigidbody.AddForce(new Vector3(0, 1, 1) * distance * _throwPower);
             _throwed = false;
         }
-        if (_onAir && _input.MouseClick)
+        if (_onAir && _input.MouseClick && !_bounced)
         {
-            _rigidbody.velocity = new Vector3(_mousePosition,-0.2f,1) * _wingsSpeed * Time.deltaTime;
+            _rigidbody.velocity = new Vector3(_mousePosition,-0.3f,1) * _wingsSpeed * Time.deltaTime;
         }
     }
 
@@ -77,11 +89,11 @@ public class PlayerController : PullAndThrow
 
     void AirAnimations()
     {
-        if(_onAir && _input.MouseClick)
+        if(_onAir && _input.MouseClick && !_bounced)
         {
             _playerAnimation.OpeningAnimation(true);
             _playerAnimation.ClosingAnimation(false);
-            _rocketmanBody.transform.eulerAngles = new Vector3(90, 0, 0);
+          
         }
         else
         {
@@ -94,13 +106,14 @@ public class PlayerController : PullAndThrow
         if (_onAir && _input.FirstMouseClick)
         {
             _currentMousePos = new Vector3(Input.mousePosition.x, 0f, 10f);
+            _bounced = false;
         }
 
-        if (_onAir && _input.MouseClick)
+        if (_onAir && _input.MouseClick && !_bounced)
         {
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, 0f, 10f);
             _mousePosition = (mousePosition.x - _currentMousePos.x) * _turnSpeed;
-            _rocketmanBody.transform.eulerAngles = new Vector3(  _rocketmanBody.transform.eulerAngles.x, _rocketmanBody.transform.eulerAngles.y, -_mousePosition * _rotateIndex);
+            _rocketmanBody.transform.eulerAngles = new Vector3(  90,0, -_mousePosition * _rotateIndex);
         }
         if (_onAir && _input.MouseUp)
         {
