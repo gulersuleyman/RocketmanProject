@@ -26,6 +26,7 @@ public class PullStickAnimation : PullAndThrow
             }
             if(_input.MouseUp)
             {
+                if(distance>0)
                 ReleaseAnimation(true);
             }
         }

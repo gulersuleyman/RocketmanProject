@@ -40,9 +40,12 @@ public abstract class PullAndThrow : MonoBehaviour
             }
             if (_input.MouseUp)
             {
-                _release = true;
-                
-                _isBeginning = false;
+                if (distance > 0)
+                {
+                    _release = true;
+
+                    _isBeginning = false;
+                }
             }
         }
     }
