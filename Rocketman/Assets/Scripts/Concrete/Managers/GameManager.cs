@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         SingletonThisGameObject();
     }
@@ -26,6 +26,6 @@ public class GameManager : MonoBehaviour
     }
     public void lateOpen()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameScene");
     }
 }

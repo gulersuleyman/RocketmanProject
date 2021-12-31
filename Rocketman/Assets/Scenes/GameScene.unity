@@ -218,6 +218,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1083724298}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: lateOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &105122503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,15 +943,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4321040325716549253, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
       propertyPath: _turnSpeed
-      value: 0.02
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321040325716549253, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
+      propertyPath: _throwPower
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4321040325716549253, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
       propertyPath: _wingsSpeed
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4321040325716549253, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
       propertyPath: _rotateIndex
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4321040325716549256, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
       propertyPath: m_RootOrder
