@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _changePositionSpeed: 1
+  _changePositionSpeed: 3
   _changeRotationSpeed: 20

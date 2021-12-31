@@ -49,7 +49,7 @@ public class PlayerController : PullAndThrow
         }
         if (_onAir && _input.MouseClick)
         {
-            _rigidbody.velocity = new Vector3(_mousePosition,0,1) * _wingsSpeed * Time.deltaTime;
+            _rigidbody.velocity = new Vector3(_mousePosition,-0.1f,1) * _wingsSpeed * Time.deltaTime;
         }
     }
 
