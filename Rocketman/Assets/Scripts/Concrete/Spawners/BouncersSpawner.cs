@@ -17,16 +17,17 @@ public class BouncersSpawner : MonoBehaviour
     {
         _xPointOfBouncers = transform.position.x;
 
-        for (int i = 0; i < _xEdgeBouncersCount; i+=20)
+        for (int i = 0; i < _xEdgeBouncersCount; i+=Random.Range(10,50))
         {
-            for (int y = 0; y < _zEdgeBouncersCount; y+=20)
+            for (int y = 0; y < _zEdgeBouncersCount; y+= Random.Range(10, 60))
             {
                 _randomBouncerIndex = Random.Range(0, _bouncers.Length);
-                Instantiate(_bouncers[_randomBouncerIndex], new Vector3(_xPointOfBouncers,transform.position.y,_zPointOfBouncers), Quaternion.identity);
-                _zPointOfBouncers += 15;
+                GameObject bouncer=Instantiate(_bouncers[_randomBouncerIndex], new Vector3(_xPointOfBouncers,transform.position.y,_zPointOfBouncers), Quaternion.identity);
+                bouncer.transform.parent = this.transform;
+                _zPointOfBouncers += Random.Range(10,20);
             }
             _zPointOfBouncers = 0;
-            _xPointOfBouncers += 10;
+            _xPointOfBouncers += Random.Range(10,15);
         }
     }
 
