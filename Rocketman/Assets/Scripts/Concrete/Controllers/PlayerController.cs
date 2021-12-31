@@ -19,6 +19,7 @@ public class PlayerController : PullAndThrow
     Vector3 _currentMousePos;
     float _mousePosition;
 
+
     void Start()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
@@ -35,7 +36,6 @@ public class PlayerController : PullAndThrow
         AirAnimations();
         MouseDragOnAir();
         
-
     }
 
     private void FixedUpdate()
@@ -100,7 +100,7 @@ public class PlayerController : PullAndThrow
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0f, 10f));
             _mousePosition = (mousePosition.x - _currentMousePos.x) * _turnSpeed;
-            _rocketmanBody.transform.eulerAngles = new Vector3(_rocketmanBody.transform.eulerAngles.x, _rocketmanBody.transform.eulerAngles.y, -_mousePosition * _rotateIndex);
+            _rocketmanBody.transform.eulerAngles = new Vector3(  _rocketmanBody.transform.eulerAngles.x, _rocketmanBody.transform.eulerAngles.y, -_mousePosition * _rotateIndex);
         }
         if (_onAir && _input.MouseUp)
         {
