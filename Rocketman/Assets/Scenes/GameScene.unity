@@ -358,6 +358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 3899713494700364402, guid: 7f4efc2fa5ae74a80bfc08689b24ea2e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f4efc2fa5ae74a80bfc08689b24ea2e, type: 3}
 --- !u!1001 &4321040324976858349
@@ -367,6 +371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4321040325716549253, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
+      propertyPath: _wingsSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4321040325716549256, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -415,16 +423,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9119190589484073083, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119190589484073083, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119190589484073083, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
+    - target: {fileID: 4321040325716549258, guid: b4f1ca29adef5423698a3a82a094bd96, type: 3}
+      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

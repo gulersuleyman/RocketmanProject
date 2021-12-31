@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerController : PullAndThrow
 {
     [SerializeField] float _throwPower;
+    [SerializeField] float _wingsSpeed;
+    [SerializeField] GameObject _rocketmanBody;
     
+
 
     PlayerAnimation _playerAnimation;
     Rigidbody _rigidbody;
@@ -13,6 +16,7 @@ public class PlayerController : PullAndThrow
     public bool _cameraMover;
     bool _throwed;
     bool _onAir;
+    
 
     void Start()
     {
@@ -39,6 +43,11 @@ public class PlayerController : PullAndThrow
             if (distance > 0)
             _rigidbody.AddForce(new Vector3(0, 1, 1) * distance * _throwPower);
             _throwed = false;
+        }
+        if (_onAir && _input.MouseClick)
+        {
+            //_rigidbody.useGravity = false;
+            _rigidbody.velocity = new Vector3(0,0,1) * _wingsSpeed * Time.deltaTime;
         }
     }
 
@@ -70,7 +79,7 @@ public class PlayerController : PullAndThrow
         {
             _playerAnimation.OpeningAnimation(true);
             _playerAnimation.ClosingAnimation(false);
-            
+            _rocketmanBody.transform.eulerAngles = new Vector3(90, 0, 0);
         }
         else
         {
